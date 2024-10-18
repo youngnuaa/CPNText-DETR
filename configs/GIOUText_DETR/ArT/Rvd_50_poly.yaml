@@ -1,0 +1,33 @@
+_BASE_: "../Base.yaml"
+
+DATASETS:
+  TRAIN: ("art_poly_train_rotate_pos","lsvt_poly_train_pos")
+  TEST: ("art_test",)
+
+MODEL:
+  BACKBONE:
+    NAME: "build_resnet_vd_backbone"
+  WEIGHTS: "output/rvd_50_poly/ArT/pretrain/model_final.pth"  # or the provided pre-trained model
+  RESNETS:
+    DEFORM_ON_PER_STAGE: [ False, False, True, True ] # dcn on res4, res5
+    OUT_FEATURES: ["res3", "res4", "res5"]
+  TRANSFORMER:
+    INFERENCE_TH_TEST: 0.325
+
+SOLVER:
+  IMS_PER_BATCH: 8
+  BASE_LR: 1e-4
+  LR_BACKBONE: 1e-5
+  WARMUP_ITERS: 0
+  STEPS: (40000,)
+  MAX_ITER: 60000
+  CHECKPOINT_PERIOD: 60000
+
+INPUT:
+  MIN_SIZE_TEST: 1200
+  MAX_SIZE_TEST: 1900
+
+TEST:
+  EVAL_PERIOD: 500000
+
+OUTPUT_DIR: "output/rvd_50_poly/art/finetune"

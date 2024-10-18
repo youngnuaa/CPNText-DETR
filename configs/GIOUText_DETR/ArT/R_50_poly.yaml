@@ -1,0 +1,29 @@
+_BASE_: "../Base.yaml"
+
+DATASETS:
+  TRAIN: ("art_poly_train_rotate_pos","lsvt_poly_train_pos")
+  TEST: ("art_test",)
+
+MODEL:
+  WEIGHTS: "output/r_50_poly/pretrain_art/model_final.pth"  # or the provided pre-trained model
+  #output/r_50_poly/pretrain_art/model_final.pth
+  TRANSFORMER:
+    INFERENCE_TH_TEST: 0.325
+
+SOLVER:
+  IMS_PER_BATCH: 8
+  BASE_LR: 1e-4
+  LR_BACKBONE: 1e-5
+  WARMUP_ITERS: 0
+  STEPS: (40000,)
+  MAX_ITER: 60000
+  CHECKPOINT_PERIOD: 60000
+
+INPUT:
+  MIN_SIZE_TEST: 1200
+  MAX_SIZE_TEST: 1900
+
+TEST:
+  EVAL_PERIOD: 70000
+
+OUTPUT_DIR: "output/r_50_poly/art/finetune"
