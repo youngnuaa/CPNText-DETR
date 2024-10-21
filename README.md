@@ -51,7 +51,7 @@ python tools/train_net.py --config-file ${CONFIG_FILE} --num-gpus 4
 With the pre-trained model, use the following command to fine-tune it on the target benchmark. The pre-trained models are also provided.  For example:
 
 ```
-python tools/train_net.py --config-file configs/CPNText_DETR/TotalText/R_50_poly.yaml --num-gpus 4
+python tools/train_net.py --config-file configs/GIOUText_DETR/TotalText/R_50_poly.yaml --num-gpus 4
 ```
 
 - ### Evaluation
