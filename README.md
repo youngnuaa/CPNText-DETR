@@ -56,7 +56,7 @@ python tools/train_net.py --config-file configs/CPNText_DETR/TotalText/R_50_poly
 
 - ### Evaluation
 ```
-python tools/train_net.py --config-file ${CONFIG_FILE} --eval-only MODEL.WEIGHTS ${MODEL_PATH}
+python tools/test_net.py --config-file ${CONFIG_FILE} --eval-only MODEL.WEIGHTS ${MODEL_PATH}
 ```
 For ICDAR19 ArT, a file named `art_submit.json` will be saved in `output/r_50_poly/art/finetune/inference/`. The json file can be directly submitted to [the official website](https://rrc.cvc.uab.es/?ch=14) for evaluation.
 
